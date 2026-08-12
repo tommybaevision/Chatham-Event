@@ -497,6 +497,33 @@
             </div>
             <div class="field-error" id="err-propType">Please select a property preference.</div>
           </div>
+
+          <div class="field">
+            <label>Has your client visited the Chatham display or received a project presentation before? <span class="req">*</span></label>
+            <div class="radio-group inline" id="visitedGroup">
+              <label class="radio-option" onclick="selectRadio(this,'visited','no'); toggleUnitField(false)">
+                <input type="radio" name="visited" value="no" required />
+                <span>No</span>
+              </label>
+              <label class="radio-option" onclick="selectRadio(this,'visited','yes'); toggleUnitField(true)">
+                <input type="radio" name="visited" value="yes" />
+                <span>Yes</span>
+              </label>
+              <label class="radio-option" onclick="selectRadio(this,'visited','notsure'); toggleUnitField(false)">
+                <input type="radio" name="visited" value="notsure" />
+                <span>Not sure</span>
+              </label>
+            </div>
+            <div class="field-error" id="err-visited">Please select an option.</div>
+
+            <!-- Unit interest — shown only when Yes selected -->
+            <div id="unitField" style="display:none; margin-top:12px; animation: fadeIn .25s ease;">
+              <label for="unitInterest" style="margin-bottom:6px;">If yes, which unit(s) are they interested in?
+                <span style="font-size:11px; color:var(--muted); font-weight:400; text-transform:none; letter-spacing:0;">(optional)</span>
+              </label>
+              <input type="text" id="unitInterest" name="unitInterest" placeholder="e.g. Unit 302, Unit 415…" />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -818,6 +845,12 @@
       labelEl.classList.add('selected');
     }
 
+    // ─── TOGGLE UNIT FIELD ───
+    function toggleUnitField(show) {
+      document.getElementById('unitField').style.display = show ? 'block' : 'none';
+      if (!show) document.getElementById('unitInterest').value = '';
+    }
+
     // ─── SHOW BUYER SECTION ───
     function showBuyerSection(type) {
       const htb = document.getElementById('htbBlock');
@@ -917,6 +950,7 @@
       const radioChecks = [
         { name: 'attendees', errId: 'err-attendees' },
         { name: 'propType',  errId: 'err-propType'  },
+        { name: 'visited',   errId: 'err-visited'   },
         { name: 'buyerType', errId: 'err-buyerType' },
       ];
       radioChecks.forEach(({ name, errId }) => {
