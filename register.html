@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register – Chatham Client Information Session</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #F7F3EC;
+      --ivory:    #FDFAF5;
+      --forest:   #1B3A2D;
+      --gold:     #B8943F;
+      --gold-lt:  #D4AF60;
+      --charcoal: #2C2C2C;
+      --muted:    #6B6457;
+      --red:      #C0392B;
+      --white:    #FFFFFF;
+      --border:   #DDD6C8;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ─── TOP BANNER ─── */
+    .top-banner {
+      background: var(--forest);
+      color: var(--gold-lt);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .top-banner a { color: var(--gold-lt); text-decoration: none; }
+    .top-banner a:hover { text-decoration: underline; }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      background: var(--ivory);
+      border-bottom: 2px solid var(--gold);
+      text-align: center;
+      padding: 40px 24px 32px;
+    }
+    .page-header-eyebrow {
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      color: var(--forest);
+      letter-spacing: .04em;
+    }
+    .page-header-meta {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ─── FORM CONTAINER ─── */
+    .form-wrap {
+      max-width: 680px;
+      margin: 40px auto 60px;
+      padding: 0 24px;
+    }
+
+    /* ─── SECTION BLOCK ─── */
+    .form-section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .form-section-header {
+      background: var(--forest);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-num {
+      background: var(--gold);
+      color: var(--forest);
+      font-size: 12px;
+      font-weight: 700;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .form-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .form-section-body { padding: 24px; }
+
+    /* ─── FIELDS ─── */
+    .field { margin-bottom: 20px; }
+    .field:last-child { margin-bottom: 0; }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 6px;
+    }
+    label .req { color: var(--red); margin-left: 2px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--charcoal);
+      background: var(--ivory);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(184,148,63,.15);
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B8943F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    /* ─── RADIO / CHECKBOX GROUP ─── */
+    .radio-group, .check-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .radio-option, .check-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      transition: border-color .2s, background .2s;
+      background: var(--ivory);
+    }
+    .radio-option:hover, .check-option:hover {
+      border-color: var(--gold);
+      background: #FEFCF5;
+    }
+    .radio-option input[type="radio"],
+    .check-option input[type="checkbox"] {
+      width: auto;
+      accent-color: var(--forest);
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .radio-option span, .check-option span {
+      font-size: 14px;
+      color: var(--charcoal);
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .radio-option.selected, .check-option.selected {
+      border-color: var(--forest);
+      background: rgba(27,58,45,.05);
+    }
+
+    /* inline radio (for 2-column layout) */
+    .radio-group.inline {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .radio-group.inline .radio-option { flex: 1 1 calc(50% - 4px); min-width: 120px; }
+
+    /* ─── OTHER INPUT INLINE ─── */
+    .other-input-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .other-input-row input[type="text"] {
+      width: auto;
+      flex: 1;
+      margin-top: 0;
+    }
+
+    /* ─── HINT TEXT ─── */
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    /* ─── DYNAMIC SECTION ─── */
+    .dynamic-block {
+      display: none;
+      margin-top: 8px;
+      border: 1.5px solid var(--gold);
+      border-radius: 6px;
+      padding: 20px;
+      background: rgba(184,148,63,.04);
+      animation: fadeIn .25s ease;
+    }
+    .dynamic-block.visible { display: block; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+
+    .dynamic-block-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dynamic-block-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gold);
+      opacity: .4;
+    }
+
+    /* ─── INCOME CONDITIONAL ─── */
+    .income-single, .income-joint { display: none; }
+    .income-single.visible, .income-joint.visible { display: block; }
+
+    /* ─── NOTICE BANNER ─── */
+    .notice-banner {
+      background: #FFF8E1;
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #5D4A00;
+    }
+    .notice-banner strong { color: var(--forest); }
+    .notice-banner .notice-icon { font-size: 18px; margin-right: 8px; }
+
+    /* ─── HTB NOTICE ─── */
+    .htb-notice {
+      background: var(--forest);
+      color: var(--gold-lt);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .htb-notice strong { color: var(--white); }
+
+    /* ─── SUBMIT ─── */
+    .submit-area {
+      text-align: center;
+      margin-top: 32px;
+    }
+    .submit-btn {
+      background: var(--forest);
+      color: var(--white);
+      border: none;
+      padding: 18px 56px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .submit-btn:hover {
+      background: #142D21;
+      transform: translateY(-2px);
+    }
+    .submit-btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .submit-note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ─── SUCCESS MESSAGE ─── */
+    #success-msg {
+      display: none;
+      background: var(--forest);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 32px;
+    }
+    #success-msg h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--gold-lt);
+      margin-bottom: 12px;
+    }
+    #success-msg p { color: rgba(255,255,255,.8); font-size: 15px; line-height: 1.7; }
+
+    /* ─── ERROR ─── */
+    .field-error {
+      font-size: 12px;
+      color: var(--red);
+      margin-top: 4px;
+      display: none;
+    }
+    .field-error.visible { display: block; }
+    input.invalid, select.invalid { border-color: var(--red); }
+
+    footer {
+      background: #111;
+      color: rgba(255,255,255,.4);
+      text-align: center;
+      font-size: 12px;
+      padding: 24px;
+      letter-spacing: .04em;
+    }
+
+    @media (max-width: 540px) {
+      .radio-group.inline { flex-direction: column; }
+      .radio-group.inline .radio-option { flex: 1 1 100%; }
+      .form-section-body { padding: 18px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BANNER -->
+  <div class="top-banner">
+    <a href="index.html">← Back to Event Info</a>
+    &nbsp;·&nbsp; Chatham Client Information Session &nbsp;·&nbsp; 28 Aug 2026
+  </div>
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <p class="page-header-eyebrow">Help to Buy Scheme</p>
+    <h1>Event Registration</h1>
+    <p class="page-header-meta">28 August 2026 &nbsp;·&nbsp; 5:30 PM &nbsp;·&nbsp; Ryde-Eastwood Leagues Club</p>
+  </div>
+
+  <div class="form-wrap">
+
+    <!-- NOTICE -->
+    <div class="notice-banner">
+      <span class="notice-icon">⚠️</span>
+      <strong>Registrations close 27 August.</strong> Limited seats — first come, first served. No walk-ins permitted. Please pre-qualify your buyers before registering.
+    </div>
+
+    <form id="regForm" novalidate>
+
+      <!-- ══ SECTION 1: AGENT DETAILS ══ -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <div class="section-num">1</div>
+          <div class="form-section-title">Agent Details</div>
+        </div>
+        <div class="form-section-body">
+          <div class="field">
+            <label for="agencyName">Agency Name <span class="req">*</span></label>
+            <input type="text" id="agencyName" name="agencyName" placeholder="e.g. Ray White Parramatta" required />
+            <div class="field-error" id="err-agencyName">Please enter your agency name.</div>
+          </div>
+          <div class="field">
+            <label for="agentName">Agent Full Name <span class="req">*</span></label>
+            <input type="text" id="agentName" name="agentName" placeholder="First and last name" required />
+            <div class="field-error" id="err-agentName">Please enter your full name.</div>
+          </div>
+          <div class="field">
+            <label for="agentMobile">Mobile <span class="req">*</span></label>
+            <input type="tel" id="agentMobile" name="agentMobile" placeholder="04XX XXX XXX" required />
+            <div class="field-error" id="err-agentMobile">Please enter a valid mobile number.</div>
+          </div>
+          <div class="field">
+            <label for="agentEmail">Email <span class="req">*</span></label>
+            <input type="email" id="agentEmail" name="agentEmail" placeholder="agent@agency.com.au" required />
+            <div class="field-error" id="err-agentEmail">Please enter a valid email address.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ SECTION 2: CLIENT DETAILS ══ -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <div class="section-num">2</div>
+          <div class="form-section-title">Client Details</div>
+        </div>
+        <div class="form-section-body">
+          <div class="field">
+            <label for="clientName">Client Full Name <span class="req">*</span></label>
+            <input type="text" id="clientName" name="clientName" placeholder="First and last name" required />
+            <div class="field-error" id="err-clientName">Please enter your client's full name.</div>
+          </div>
+          <div class="field">
+            <label for="clientMobile3">Last 3 digits of Client's Mobile <span class="req">*</span></label>
+            <input type="text" id="clientMobile3" name="clientMobile3" placeholder="e.g. 524" maxlength="3" pattern="\d{3}" required />
+            <div class="hint">Used for identity confirmation on the day.</div>
+            <div class="field-error" id="err-clientMobile3">Please enter the last 3 digits.</div>
+          </div>
+          <div class="field">
+            <label>Number of Attendees <span class="req">*</span></label>
+            <div class="radio-group" id="attendeesGroup">
+              <label class="radio-option" onclick="selectRadio(this,'attendees','client_only')">
+                <input type="radio" name="attendees" value="client_only" required />
+                <span>Client only</span>
+              </label>
+              <label class="radio-option" onclick="selectRadio(this,'attendees','client_partner')">
+                <input type="radio" name="attendees" value="client_partner" />
+                <span>Client + partner</span>
+              </label>
+              <label class="radio-option" id="attendees-other-row" onclick="selectRadio(this,'attendees','other')">
+                <input type="radio" name="attendees" value="other" />
+                <span>Other:</span>
+                <input type="text" id="attendeesOtherText" name="attendeesOtherText"
+                       placeholder="specify…" style="margin-left:8px; width:140px; padding:6px 10px; font-size:14px;"
+                       onclick="event.stopPropagation();" />
+              </label>
+            </div>
+            <div class="field-error" id="err-attendees">Please select the number of attendees.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ SECTION 3: PROPERTY PREFERENCE ══ -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <div class="section-num">3</div>
+          <div class="form-section-title">Property Preference</div>
+        </div>
+        <div class="form-section-body">
+          <div class="field">
+            <label>What type of property is your client interested in? <span class="req">*</span></label>
+            <div class="radio-group inline" id="propTypeGroup">
+              <label class="radio-option" onclick="selectRadio(this,'propType','1bed')">
+                <input type="radio" name="propType" value="1bed" required />
+                <span>1 Bedroom</span>
+              </label>
+              <label class="radio-option" onclick="selectRadio(this,'propType','2bed')">
+                <input type="radio" name="propType" value="2bed" />
+                <span>2 Bedroom</span>
+              </label>
+              <label class="radio-option" onclick="selectRadio(this,'propType','3bed')">
+                <input type="radio" name="propType" value="3bed" />
+                <span>3 Bedroom</span>
+              </label>
+              <label class="radio-option" onclick="selectRadio(this,'propType','notsure')">
+                <input type="radio" name="propType" value="notsure" />
+                <span>Not sure yet</span>
+              </label>
+            </div>
+            <div class="field-error" id="err-propType">Please select a property preference.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ SECTION 4: HELP TO BUY PRE-CHECK ══ -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <div class="section-num">4</div>
+          <div class="form-section-title">Help to Buy Quick Pre-Check</div>
+        </div>
+        <div class="form-section-body">
+
+          <!-- HTB notice -->
+          <div class="htb-notice">
+            <strong>⚠️ Please note:</strong> Final eligibility will be confirmed by CBA on the day. This pre-check is a guide only — it does not determine your client's actual qualification for the Help to Buy scheme.
+          </div>
+
+          <div class="field">
+            <label>Which best describes your client? <span class="req">*</span></label>
+            <div class="radio-group" id="buyerTypeGroup">
+              <label class="radio-option" onclick="selectRadio(this,'buyerType','htb'); showBuyerSection('htb')">
+                <input type="radio" name="buyerType" value="htb" required />
+                <span>Help to Buy buyer</span>
+              </label>
+              <label class="radio-option" onclick="selectRadio(this,'buyerType','htb_unsure'); showBuyerSection('htb')">
+                <input type="radio" name="buyerType" value="htb_unsure" />
+                <span>Not sure — needs Help to Buy assessment</span>
+              </label>
+              <label class="radio-option" onclick="selectRadio(this,'buyerType','general'); showBuyerSection('general')">
+                <input type="radio" name="buyerType" value="general" />
+                <span>Other home buyer (not using Help to Buy)</span>
+              </label>
+            </div>
+            <div class="field-error" id="err-buyerType">Please select one option.</div>
+          </div>
+
+          <!-- ── OPTION A: HTB PRE-CHECK ── -->
+          <div class="dynamic-block" id="htbBlock">
+            <div class="dynamic-block-title">Option A — Help to Buy Pre-Check</div>
+
+            <div class="field">
+              <label>1. Is the client an Australian citizen? <span class="req">*</span></label>
+              <div class="radio-group inline" id="citizenGroup">
+                <label class="radio-option" onclick="selectRadio(this,'citizen','yes')">
+                  <input type="radio" name="citizen" value="yes" />
+                  <span>Yes</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'citizen','no')">
+                  <input type="radio" name="citizen" value="no" />
+                  <span>No</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>2. Client is 18 or over <span class="req">*</span></label>
+              <div class="radio-group inline" id="ageGroup">
+                <label class="radio-option" onclick="selectRadio(this,'ageOk','yes')">
+                  <input type="radio" name="ageOk" value="yes" />
+                  <span>Yes</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'ageOk','no')">
+                  <input type="radio" name="ageOk" value="no" />
+                  <span>No</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>3. Will they live in the property? <span class="req">*</span></label>
+              <div class="radio-group inline" id="liveGroup">
+                <label class="radio-option" onclick="selectRadio(this,'liveIn','yes')">
+                  <input type="radio" name="liveIn" value="yes" />
+                  <span>Yes</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'liveIn','no')">
+                  <input type="radio" name="liveIn" value="no" />
+                  <span>No</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>4. Does the client currently own any property in Australia or overseas? <span class="req">*</span></label>
+              <div class="radio-group" id="ownGroup">
+                <label class="radio-option" onclick="selectRadio(this,'ownsProperty','no')">
+                  <input type="radio" name="ownsProperty" value="no" />
+                  <span>No</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'ownsProperty','yes')">
+                  <input type="radio" name="ownsProperty" value="yes" />
+                  <span>Yes</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'ownsProperty','notsure')">
+                  <input type="radio" name="ownsProperty" value="notsure" />
+                  <span>Not sure</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>5. Application type <span class="req">*</span></label>
+              <div class="radio-group" id="appTypeGroup">
+                <label class="radio-option" onclick="selectRadio(this,'appType','single'); showIncome('single')">
+                  <input type="radio" name="appType" value="single" />
+                  <span>Single</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'appType','joint'); showIncome('joint')">
+                  <input type="radio" name="appType" value="joint" />
+                  <span>Joint</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'appType','single_parent'); showIncome('joint')">
+                  <input type="radio" name="appType" value="single_parent" />
+                  <span>Single parent</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>6. Is their taxable income within the Help to Buy limit? <span class="req">*</span></label>
+              <p class="hint" style="margin-bottom:10px;">* Taxable income based on the previous FY Notice of Assessment</p>
+
+              <!-- Single income options -->
+              <div class="income-single" id="incomeSingle">
+                <div class="radio-group" id="incomeSingleGroup">
+                  <label class="radio-option" onclick="selectRadio(this,'income','single_under')">
+                    <input type="radio" name="income" value="single_under" />
+                    <span>$103,000 or less</span>
+                  </label>
+                  <label class="radio-option" onclick="selectRadio(this,'income','single_over')">
+                    <input type="radio" name="income" value="single_over" />
+                    <span>Over $103,000</span>
+                  </label>
+                  <label class="radio-option" onclick="selectRadio(this,'income','single_notsure')">
+                    <input type="radio" name="income" value="single_notsure" />
+                    <span>Not sure</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Joint / single parent income options -->
+              <div class="income-joint" id="incomeJoint">
+                <div class="radio-group" id="incomeJointGroup">
+                  <label class="radio-option" onclick="selectRadio(this,'income','joint_under')">
+                    <input type="radio" name="income" value="joint_under" />
+                    <span>$165,000 or less</span>
+                  </label>
+                  <label class="radio-option" onclick="selectRadio(this,'income','joint_over')">
+                    <input type="radio" name="income" value="joint_over" />
+                    <span>Over $165,000</span>
+                  </label>
+                  <label class="radio-option" onclick="selectRadio(this,'income','joint_notsure')">
+                    <input type="radio" name="income" value="joint_notsure" />
+                    <span>Not sure</span>
+                  </label>
+                </div>
+              </div>
+
+              <p id="incomePrompt" class="hint" style="color: var(--gold);">Please select an application type above to see income options.</p>
+            </div>
+
+            <div class="field">
+              <label>7. Approx. deposit available <span class="req">*</span></label>
+              <div class="radio-group" id="htbDepositGroup">
+                <label class="radio-option" onclick="selectRadio(this,'htbDeposit','under20k')">
+                  <input type="radio" name="htbDeposit" value="under20k" />
+                  <span>Under $20,000</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'htbDeposit','20to50k')">
+                  <input type="radio" name="htbDeposit" value="20to50k" />
+                  <span>$20,000 – $50,000</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'htbDeposit','50to100k')">
+                  <input type="radio" name="htbDeposit" value="50to100k" />
+                  <span>$50,000 – $100,000</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'htbDeposit','over100k')">
+                  <input type="radio" name="htbDeposit" value="over100k" />
+                  <span>$100,000+</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>8. Has the client spoken to a lender / broker?</label>
+              <div class="radio-group" id="lenderGroup">
+                <label class="radio-option" onclick="selectRadio(this,'lenderStatus','preapproved')">
+                  <input type="radio" name="lenderStatus" value="preapproved" />
+                  <span>Yes — pre-approved</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'lenderStatus','capacity')">
+                  <input type="radio" name="lenderStatus" value="capacity" />
+                  <span>Yes — borrowing capacity checked</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'lenderStatus','notyet')">
+                  <input type="radio" name="lenderStatus" value="notyet" />
+                  <span>Not yet</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── OPTION B: GENERAL BUYER ── -->
+          <div class="dynamic-block" id="generalBlock">
+            <div class="dynamic-block-title">Option B — General Buyer Pre-Check</div>
+
+            <div class="field">
+              <label>1. Is the client a first home buyer? <span class="req">*</span></label>
+              <div class="radio-group inline" id="fhbGroup">
+                <label class="radio-option" onclick="selectRadio(this,'fhb','yes')">
+                  <input type="radio" name="fhb" value="yes" />
+                  <span>Yes</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'fhb','no')">
+                  <input type="radio" name="fhb" value="no" />
+                  <span>No</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>2. Approx. deposit available <span class="req">*</span></label>
+              <div class="radio-group" id="genDepositGroup">
+                <label class="radio-option" onclick="selectRadio(this,'genDeposit','under50k')">
+                  <input type="radio" name="genDeposit" value="under50k" />
+                  <span>Under $50k</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'genDeposit','50to100k')">
+                  <input type="radio" name="genDeposit" value="50to100k" />
+                  <span>$50k – $100k</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'genDeposit','100to200k')">
+                  <input type="radio" name="genDeposit" value="100to200k" />
+                  <span>$100k – $200k</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'genDeposit','over200k')">
+                  <input type="radio" name="genDeposit" value="over200k" />
+                  <span>$200k+</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>3. Approx. purchase budget <span class="req">*</span></label>
+              <div class="radio-group" id="budgetGroup">
+                <label class="radio-option" onclick="selectRadio(this,'budget','under800k')">
+                  <input type="radio" name="budget" value="under800k" />
+                  <span>Under $800k</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'budget','800to1m')">
+                  <input type="radio" name="budget" value="800to1m" />
+                  <span>$800k – $1.0M</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'budget','1m_to_1_2m')">
+                  <input type="radio" name="budget" value="1m_to_1_2m" />
+                  <span>$1.0M – $1.2M</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'budget','over1_2m')">
+                  <input type="radio" name="budget" value="over1_2m" />
+                  <span>$1.2M+</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>4. Finance status <span class="req">*</span></label>
+              <div class="radio-group" id="financeGroup">
+                <label class="radio-option" onclick="selectRadio(this,'finance','preapproved')">
+                  <input type="radio" name="finance" value="preapproved" />
+                  <span>Pre-approved</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'finance','capacity')">
+                  <input type="radio" name="finance" value="capacity" />
+                  <span>Borrowing capacity checked</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'finance','notassessed')">
+                  <input type="radio" name="finance" value="notassessed" />
+                  <span>Not yet assessed</span>
+                </label>
+                <label class="radio-option" onclick="selectRadio(this,'finance','cash')">
+                  <input type="radio" name="finance" value="cash" />
+                  <span>Cash buyer</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="submit-area">
+        <button type="submit" class="submit-btn" id="submitBtn">Submit Registration →</button>
+        <p class="submit-note">Your details are collected securely and used only for event management purposes.</p>
+      </div>
+
+    </form>
+
+    <!-- SUCCESS -->
+    <div id="success-msg">
+      <h2>✓ Registration Received</h2>
+      <p>Thank you! Your registration has been submitted.<br/>
+      A confirmation will be sent to the email address provided.<br/><br/>
+      <strong>28 August 2026 · 5:30 PM · Ryde-Eastwood Leagues Club</strong><br/>
+      Questions? Contact Kate Kim on 0425 459 524.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2026 Chatham by Ventus &nbsp;·&nbsp; All rights reserved
+  </footer>
+
+  <script>
+    // ─── RADIO HIGHLIGHT ───
+    function selectRadio(labelEl, groupName, value) {
+      document.querySelectorAll(`input[name="${groupName}"]`).forEach(r => {
+        r.closest('label')?.classList.remove('selected');
+      });
+      labelEl.classList.add('selected');
+    }
+
+    // ─── SHOW BUYER SECTION ───
+    function showBuyerSection(type) {
+      const htb = document.getElementById('htbBlock');
+      const gen = document.getElementById('generalBlock');
+      htb.classList.remove('visible');
+      gen.classList.remove('visible');
+      if (type === 'htb') htb.classList.add('visible');
+      if (type === 'general') gen.classList.add('visible');
+    }
+
+    // ─── SHOW INCOME OPTIONS BY APP TYPE ───
+    function showIncome(type) {
+      const single = document.getElementById('incomeSingle');
+      const joint  = document.getElementById('incomeJoint');
+      const prompt = document.getElementById('incomePrompt');
+      // clear existing income selections
+      document.querySelectorAll('input[name="income"]').forEach(r => {
+        r.checked = false;
+        r.closest('label')?.classList.remove('selected');
+      });
+      if (type === 'single') {
+        single.classList.add('visible');
+        joint.classList.remove('visible');
+        prompt.style.display = 'none';
+      } else {
+        joint.classList.add('visible');
+        single.classList.remove('visible');
+        prompt.style.display = 'none';
+      }
+    }
+
+    // ─── FORM SUBMISSION → NETLIFY ───
+    const form = document.getElementById('regForm');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      if (!validateForm()) return;
+
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+
+      const data = new FormData(form);
+      // Append Other attendees text if selected
+      const otherRadio = document.querySelector('input[name="attendees"][value="other"]');
+      if (otherRadio?.checked) {
+        data.set('attendees', 'Other: ' + (document.getElementById('attendeesOtherText').value || ''));
+      }
+
+      try {
+        const res = await fetch('/.netlify/functions/submit-registration', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(data).toString()
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('success-msg').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Submit Registration →';
+        alert('There was a problem submitting your registration. Please try again or contact Kate Kim on 0425 459 524.');
+      }
+    });
+
+    // ─── VALIDATION ───
+    function validateForm() {
+      let valid = true;
+
+      const required = ['agencyName', 'agentName', 'agentMobile', 'agentEmail', 'clientName', 'clientMobile3'];
+      required.forEach(id => {
+        const el = document.getElementById(id);
+        const err = document.getElementById('err-' + id);
+        if (!el.value.trim()) {
+          el.classList.add('invalid');
+          err.classList.add('visible');
+          valid = false;
+        } else {
+          el.classList.remove('invalid');
+          err.classList.remove('visible');
+        }
+      });
+
+      // Email check
+      const email = document.getElementById('agentEmail');
+      if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.classList.add('invalid');
+        document.getElementById('err-agentEmail').classList.add('visible');
+        valid = false;
+      }
+
+      // Radio groups
+      const radioChecks = [
+        { name: 'attendees', errId: 'err-attendees' },
+        { name: 'propType',  errId: 'err-propType'  },
+        { name: 'buyerType', errId: 'err-buyerType' },
+      ];
+      radioChecks.forEach(({ name, errId }) => {
+        const checked = document.querySelector(`input[name="${name}"]:checked`);
+        const err = document.getElementById(errId);
+        if (!checked) {
+          err.classList.add('visible');
+          valid = false;
+        } else {
+          err.classList.remove('visible');
+        }
+      });
+
+      if (!valid) {
+        const firstErr = document.querySelector('.field-error.visible, .invalid');
+        firstErr?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return valid;
+    }
+  </script>
+</body>
+</html>
